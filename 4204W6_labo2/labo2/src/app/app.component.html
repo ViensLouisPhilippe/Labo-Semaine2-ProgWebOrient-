@@ -6,8 +6,8 @@
   <div class="row">
     <div class="col-3">
       <form (ngSubmit)="searchArtist()" *ngIf="!result">
-        <input type="text" name="artistName" class="form-control" placeholder="Nom d'un artiste">
-        <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
+        <input type="text" name="artistName" class="form-control" placeholder="Nom d'un artiste" [(ngModel)]="artist">
+        <input (click)="request()" type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
       <form (ngSubmit)="newSearch()" *ngIf="result">
         <input type="submit" value="Nouvelle recherche">
@@ -17,6 +17,10 @@
         <h2>Résultats</h2>
         <div *ngIf="result">
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
+      <h3>Artiste similaires à {{artist}}</h3>
+      <ul>
+        <li *ngFor="let a of similarArtists">{{a}}</li>
+      </ul>
 		</div>
     </div>
   </div>
